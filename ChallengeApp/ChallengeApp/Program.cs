@@ -1,25 +1,32 @@
-﻿//Zadanie dzień 4
+﻿//Zadanie dzień 6
 
-var name = "Ewa";
-bool isFemale = true;
-var age = 38;
+// Importuje przestrzeń nazw ChallengeApp, aby móc używać klasy Employee.
+using ChallengeApp;
 
-if ((!true) && age < 18)
+// Tworzy nową pustą listę pracowników.
+List<Employee> employees = new List<Employee>();
+
+// Dodaje trzech pracowników do listy, ustawiając ich imiona, nazwiska, wiek oraz wyniki punktowe.
+employees.Add(new Employee("Jan", "Kowalski", 30, new List<int> { 7, 9, 10, 6, 8 }));
+employees.Add(new Employee("Anna", "Nowak", 25, new List<int> { 10, 9, 8, 9, 7 }));
+employees.Add(new Employee("Piotr", "Zieliński", 35, new List<int> { 5, 8, 6, 7, 9 }));
+
+// Ustawia pierwszego pracownika jako początkowo najlepszego.
+// Przechodzi przez wszystkich pracowników na liście i porównuje ich wyniki punktowe
+// z najlepszym wynikiem punktowym do tej pory.
+// Jeśli wynik punktowy nowego pracownika jest lepszy, ustawia go jako nowego najlepszego pracownika.
+Employee bestEmployee = employees[0];
+foreach (Employee employee in employees)
 {
-    Console.WriteLine("Niepełnoletni mężczyzna");
-}
-else if ((!false) && age < 30)
-{
-    Console.WriteLine("Kobieta po niżej 30 lat");
-}
-else if (true)
-{
-    if (age == 33 && name == "Ewa")
+    if (employee.GetPointsSum() > bestEmployee.GetPointsSum())
     {
-        Console.WriteLine("Ewa lat 33");
-    }
-    else if (age > 33 && age <= 40)
-    {
-        Console.WriteLine("Kobieta między 34 a 40 lat");
+        bestEmployee = employee;
     }
 }
+
+// Wyświetla informacje o najlepszym pracowniku.
+Console.WriteLine("Najlepszy pracownik:");
+Console.WriteLine("Imię: " + bestEmployee.FirstName);
+Console.WriteLine("Nazwisko: " + bestEmployee.LastName);
+Console.WriteLine("Wiek: " + bestEmployee.Age);
+Console.WriteLine("Suma punktów: " + bestEmployee.GetPointsSum());
