@@ -8,10 +8,10 @@
         //Klasa zawiera publiczne właściwości "FirstName", "LastName", "Age" i "Points", które mają prywatne
         //settery, co oznacza, że ​​można odczytywać wartości tych właściwości z zewnątrz, ale nie można ich
         //bezpośrednio ustawiać.
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
-        public List<int> Points { get; set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public int Age { get; private set; }
+        public List<int> Points { get; private set; }
 
         //Konstruktor klasy "Employee" przyjmuje cztery argumenty, które są wykorzystywane do ustawienia
         //wartości właściwości dla nowo utworzonego obiektu "Employee".
